@@ -9,8 +9,14 @@
 # $fleet_tag is the Github tagged version number example "fleet-v4.16.0"
 # $version is the version number stripped from the tag, example "v4.16.0"
 
-# find our working folder and find the current Fleetdm version
+# Go to our working folder
 cd /home/fleet/fleet-source/
+
+# Delete the old downloads in this folder
+rm -rf fleet_*
+rm -rf fleetctl_*
+
+# Find the current Fleetdm version
 fleet_tag=$(curl -sL https://api.github.com/repos/fleetdm/fleet/releases/latest | jq -r ".tag_name")
 
 echo current version of fleet is $fleet_tag
