@@ -35,6 +35,19 @@ curl -sL https://github.com/fleetdm/fleet/releases/download/"$fleet_tag"/fleet_"
 # Let's download Fleetctl
 curl -sL https://github.com/fleetdm/fleet/releases/download/$fleet_tag/fleetctl_"$version"_linux.tar.gz -o fleetctl_"$version"_linux.tar.gz
 
+# Let's check the sums 
+linux_checksums=$( curl -sL https://github.com/fleetdm/fleet/releases/download/fleet-"$version"/checksums.txt | grep linux.tar.gz )
+fleet_checksum=$( echo "$linux_checksums" | grep fleet_$version )
+fleetctl_checksum=$( echo "$linux_checksums" | grep fleetctl_$version )
+if ( echo $fleet_checksum | sha256sum -c --status ) && ( echo $fleetctl_checksum | sha256sum -c --status )
+then
+        echo "Hashes match"
+else
+        echo "Hash mismatch!"
+        exit 1
+fi
+
+
 # Expand Fleet
 tar -xf fleet_"$version"_linux.tar.gz
 
