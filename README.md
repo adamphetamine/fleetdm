@@ -12,6 +12,7 @@ It is extensively commented, if you can improve it please do and let me know so 
 This script will use the variables in the execution command to create a .plist file in the working directory.
 Why? 
 So we can read back the prefs file later and make these variables into tags that FleetDM can use
+- new improved version will work on Linux too
 
 Method
 You can make your own variables, however we chose these-
