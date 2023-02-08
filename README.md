@@ -8,8 +8,9 @@ and then restart Fleet.
 
 It is extensively commented, if you can improve it please do and let me know so I can learn.
 
-# clientprefs.sh
-This script will use the variables in the execution command to create a .plist file in the working directory.
+# fleet_client.sh
+This script will use the variables in the execution command to create a file in an appropriate directory for both Mac and Linux.
+Warning- I hard coded my business name 'Servicemax' as one of the directories so I can remove it from client machines easily. You can either modify the script or wait until I do a more generic version, but that might be a while...
 Why? 
 So we can read back the prefs file later and make these variables into tags that FleetDM can use
 - new improved version will work on Linux too
@@ -22,6 +23,10 @@ BUSINESSUNIT="$3"
 LOCATION="$4"
 CUSTOM1="$5"
 
-So to create a .plist file with some variables added, you could execute something like 
+So to create a .env file with some variables added, you could execute something like 
 
-sudo sh ./clientprefs.sh "YumBrands" "KFC" "Chook_Cook" "Sydney" "MyCustomvalue"
+sudo sh ./fleet_client.sh "YumBrands" "KFC" "Chook_Cook" "Sydney" "MyCustomvalue"
+
+
+# clientprefs.sh
+This version is basically deprecated now but works the same way as the one above. It's output is a .plist instead of more generic .env and it only works on Macs.
