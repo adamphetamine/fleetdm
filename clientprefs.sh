@@ -1,17 +1,9 @@
-#!/bin/bash
-#
-# How to use this script
-# download and make executable with chmod +x
-# Example usage- sudo sh ./clientprefs.sh "YumBrands" "KFC" "Chook_Cook" "Sydney" "MyCustomvalue"
+#!/bin/sh
 
 # Get the host operating system information
 OS=$(uname -s)
 
-# Print the result
-echo "The host operating system is: $OS"
-
 # Define the input arguments
-VERSION=1.00   # yes this is hard coded 
 COMPANYGROUP="$1"
 COMPANY="$2"
 BUSINESSUNIT="$3"
@@ -56,5 +48,3 @@ plist_path="$target_dir/com.servicemax.clientprefs.plist"
 
 # Write the contents to a file
 echo "$plist_contents" > "$plist_path"
-
-echo finished writing preferences to file
